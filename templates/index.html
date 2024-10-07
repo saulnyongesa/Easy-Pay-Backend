@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+        <div class="w-100" style="min-height: 80vh">
+            <div class="" style="height: 40vh; margin-top: 20vh; width: 50%; margin-left: 25%">
+                <div class="w-100">
+                    <h1 class="text-center text-info font-weight-bolder">{{ request.user.business_name }}</h1>
+                </div>
+                <div class="w-100">
+                    <h3 class="text-center text-dark font-weight-bolder">Welcome To Scan pay</h3>
+                </div>
+            </div>
+        </div>
+{% endblock %}

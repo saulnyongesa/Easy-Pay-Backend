@@ -1,0 +1,110 @@
+{% extends 'main.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <div class="row w-100">
+        <form id="signup-form" class="card col-sm-12 col-md-7 m-auto" action="{% url 'sign-up-url' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <div class="card-header">
+                <h3>Sign Up</h3>
+            </div>
+            <div class="card-body">
+                <div id="div_id_business_name" class="form-group">
+                    <label for="business_name" class=" requiredField">
+                        Business name<span class="asteriskField">*</span>
+                    </label>
+                    <div>
+                        <input type="text" name="business_name" maxlength="200" class="textinput form-control" required="" id="business_name">
+                    </div>
+                </div>
+                <div id="div_id_business_name" class="form-group">
+                    <label for="email" class=" requiredField">
+                        Email<span class="asteriskField">*</span>
+                    </label>
+                    <div>
+                        <input type="email" name="email" maxlength="200" class="textinput form-control" required="" id="email">
+                    </div>
+                </div>
+                <div id="div_id_business_name" class="form-group">
+                    <label for="phone" class=" requiredField">
+                        Phone number<span class="asteriskField">*</span>
+                    </label>
+                    <div>
+                        <input type="number" name="phone" maxlength="200" class="textinput form-control" placeholder="E.g. 254700000000 or 254100000000" required="" id="phone">
+                    </div>
+                </div>
+
+
+                <div id="div_id_business_name" class="form-group">
+                    <label for="password" class=" requiredField">
+                        Password<span class="asteriskField">*</span>
+                    </label>
+                    <div>
+                        <input type="password" name="password" maxlength="200" class="textinput form-control" required="" id="password">
+                    </div>
+                </div>
+                <div id="div_id_business_name" class="form-group">
+                    <label for="confirm_password" class=" requiredField">
+                        Confirm Password<span class="asteriskField">*</span>
+                    </label>
+                    <div>
+                        <input type="password" name="confirm_password" maxlength="200" class="textinput form-control" required="" id="confirm_password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer text-center">
+                <input type="submit" value="Submit"><br>
+                <h6>You have an account? <a href="{% url 'sign-in-url'%}">Sign in</a></h6>
+            </div>
+        </form>
+    </div>
+    <script>
+        // DIALOG BOX=================================================================
+        function showDialog(message) {
+            document.getElementById("dialog-message").innerText = message;
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("dialog-box").style.display = "block";
+        }
+        function closeDialog() {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("dialog-box").style.display = "none";
+        }
+
+
+        // FORM VALIDATION=============================================================
+        function validateEmail(email) {
+            // Regular expression for validating email addresses
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        const form_signup = document.getElementById("signup-form");
+        form_signup.addEventListener("submit", function(event) {
+            const password = document.getElementById("password").value;
+            const confirm_password = document.getElementById("confirm_password").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            if (password.length < 8) {
+                event.preventDefault(); // Prevent form submission
+                showDialog("Password must be at least 8 characters long.");
+            }
+            if (password !== confirm_password) {
+                event.preventDefault(); // Prevent form submission
+                showDialog("Password and confirm password must be the same.");
+            }
+            if (!validateEmail(email)) {
+                event.preventDefault(); // Prevent form submission
+                showDialog("Invalid email address");
+            }
+            if (!phone.startsWith("254")) {
+                event.preventDefault(); // Prevent form submission
+                showDialog("Phone number must start with 254 E.g. 254700000000");
+            }
+            if (phone.length <12 ) {
+                event.preventDefault(); // Prevent form submission
+                showDialog("Invalid phone number. Phone number must start with 254 E.g. 254700000000");
+            }
+        });
+    </script>
+{% endblock %}

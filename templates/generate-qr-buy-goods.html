@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <div class="row w-100">
+        <form  class="card col-sm-12 col-md-7 m-auto" action="{% url 'generate-qr-buygoods-url' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-header">
+                <h3 class="text-center text-info">Generate QR Code For Your Till</h3>
+            </div>
+            <div class="card-body">
+                <div id="div_id_business_name" class="form-group">
+                    <label for="till_number" class=" requiredField">
+                        Till number<span class="asteriskField">*</span>
+                    </label>
+                    <div>
+                        <input type="number" name="till_number" maxlength="200" class="textinput form-control" required="" id="till_number">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-success">Generate</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

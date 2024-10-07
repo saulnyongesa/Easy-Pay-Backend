@@ -1,0 +1,233 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    /*background-color: rgba(128, 128, 128, 0.51);*/
+}
+
+/*MESSAGES=======================================*/
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}
+
+
+/*NAVIGATION STYLES===============================*/
+.navbar, .footer{
+    min-height: 10vh;
+    background-color: #201f1f;
+}
+.navbar .navbar-brand{
+    font-size: 150%;
+    font-weight: bolder;
+}
+.navbar .collapse{
+    justify-content: right;
+}
+.navbar .collapse .navbar-nav{
+    width: 100%;
+    justify-content: right;
+}
+.navbar .collapse .navbar-nav li{
+    /*margin: auto;*/
+}
+.navbar .collapse .navbar-nav li a{
+    font-weight: bolder;
+    font-size: 15px;
+    color: white;
+}
+.navbar .collapse .navbar-nav li a:hover{
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.68);
+    text-decoration: underline;
+}
+
+
+/* DIALOG BOX==========================*/
+.dialog-box {
+    display: none;
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(80, 77, 77, 0.86);
+    z-index: 1000;
+}
+.dialog-box p{
+    color: red;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+}
+.dialog-box button{
+    width: 50%;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: unset;
+    border-radius: 10px;
+    color: black;
+    font-weight: bolder;
+    background-color: #04044b;
+}
+.dialog-box button:hover{
+    background-color: rgba(0, 0, 0, 0.86);
+    color: green;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+
+
+/*MAIN======================================*/
+.main-content{
+    background-color: #e3e9ee;
+    color: black;
+    font-size: 15px;
+    font-weight: bolder;
+    min-height: 90vh;
+}
+
+
+
+/*FORMS==============================*/
+.form{
+    border: unset;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.86);
+}
+form .card-header h1{
+    font-weight: bolder;
+}
+form .card-body label{
+    font-weight: bolder;
+    width: 100%;
+}
+
+form .card-body label input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    font-weight: bolder;
+}
+form .card-body label select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    font-weight: bolder;
+}
+form .card-body label select option:hover{
+    background-color: rgba(0, 0, 0, 0.86);
+}
+form .card-footer input{
+    width: 100%;
+    padding: 10px;
+    border: unset;
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+    background-color: #04044b;
+}
+form .card-footer input:hover {
+    background-color: rgba(0, 0, 0, 0.86);
+    color: green;
+}
+form .card-footer h1{
+    text-align: center;
+    color: #04044b;
+}
+form .card-footer a{
+    text-decoration: none;
+    color: #04044b;
+    font-size: 15px;
+    font-weight: bolder;
+}
+.search-form input{
+    border: unset;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.item-display{
+    height: 100vh;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+/* LOCATION DISPLAY==========================*/
+.send-email-box{
+    display: none;
+    position: absolute;
+   /* width: 50vw;
+    height: 50vh;*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.86);
+    z-index: 1000;
+}
+.send-email-box .card .card-header h1{
+    text-align: center;
+    font-weight: bolder;
+}
+.send-email-box .map {
+
+
+}
+
+.send-email-overlay {
+    display: none;
+    position: fixed;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.send-email-msg{
+    padding: 10px;
+    height: 100%;
+}
+
+
+/*INDEX ==============================================*/
+.dashboard{
+    min-height: 100vh;
+}
+.dashboard-right{
+    min-height: 100vh;
+}
+.dashboard-left{
+    min-height: 100vh;
+}
+.card{
+    border: 1px solid #04044b;
+    box-shadow: 0 20px 40px rgba(143, 138, 138, 0.86);
+}
+.dashboard .card .card-body {
+    height: 300px; /* Set a fixed height for the card body */
+    overflow-y: auto; /* Enable vertical scrolling */
+}

@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="w-100 row">
+        <form class="card col-sm-12 col-md-5 m-auto" action="{% url 'sign-in-url' %}" method="post">
+            <div class="card-header text-info text-center">
+                <h4>Sgn In</h4>
+            </div>
+
+            <div class="card-body d-block">
+                {% csrf_token %}
+                <label for="username">
+                    Email:
+                    <br>
+                    <input type="text" id="username" name="username">
+                </label><br>
+                <label for="password">
+                    Password:
+                    <br>
+                    <input type="password" id="password" name="password">
+                </label>
+            </div>
+
+            <div class="card-footer text-center">
+                <input type="submit" value="Login"><br>
+                <h6>You don't have an account? <a href="{% url 'sign-up-url'%}">Sign up</a></h6>
+            </div>
+        </form>
+    </div>
+{% endblock %}

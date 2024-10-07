@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan and Pay</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark">
+    <a class="navbar-brand" href="{% url 'dashboard-url' %}">Scan And Pay</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {% if request.user.is_authenticated %}
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav d-md-flex">
+        <li class="nav-item m-md-auto">
+            <a class="nav-link" href="{% url 'dashboard-url' %}">
+                Home
+            </a>
+        </li>
+        <li class="nav-item m-md-auto">
+            <a class="nav-link" href="{% url 'show-qr-buygoods-url' %}">Buy Goods & Services</a>
+        </li>
+        <li class="nav-item m-md-auto">
+            <a class="nav-link" href="{% url 'show-qr-paybill-url' %}">Pay Bill</a>
+        </li>
+        <li class="nav-item dropdown m-md-auto">
+            <a class="dropdown-toggle btn btn-link text-light" role="button" data-toggle="dropdown" aria-expanded="false">{{ request.user.business_name }}</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" href="{% url 'profile-url' %}">My Profile</a>
+                <a class="dropdown-item text-danger" href="{% url 'sign-out-url' %}">Sign out</a>
+            </div>
+        </li>
+    {% else %}
+        <li class="nav-item m-md-auto">
+            <a class="nav-link btn btn-link" href="{% url 'sign-in-url' %}">SIGN IN</a>
+        </li>
+        <li class="nav-item m-md-auto">
+            <a class="nav-link btn btn-link" href="{% url 'sign-up-url' %}">CREATE ACCOUNT</a>
+        </li>
+    {% endif %}
+    </ul>
+    </div>
+</nav>
+<div class="container-fluid main-content bg-light">
+    {% for message in messages %}
+        <p class="alert alert-dismissible alert-info text-center m-auto" style="width: 90%; margin-bottom: 10px">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong  {% if message.tags %} class="{{ message.tags }} text-capitalize"{% endif %}>
+                {{ message }}
+            </strong>
+        </p>
+    {% endfor %}
+    <div class="overlay" id="overlay"></div>
+    <div class="dialog-box" id="dialog-box">
+        <p id="dialog-message"></p>
+        <button onclick="closeDialog()">Close</button>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'bootstrap/js/jquery-3.4.0.js' %}"></script>
+<script src="{% static 'bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+</body>
+</html>

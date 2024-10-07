@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <div class="w-100 row">
+        <form id="signup-form" class="card col-sm-12 col-md-7 m-auto" action="{% url 'user-edit-url' %}" method="post">
+            <div class="card-header text-center">
+                <h3 class="text-info">PROFILE DETAILS</h3>
+            </div>
+
+            <div class="card-body d-block">
+                {% csrf_token %}
+                {{ form|crispy }}
+            </div>
+
+            <div class="card-footer text-center">
+                <input type="submit" value="Save"><br>
+            </div>
+        </form>
+    </div>
+{% endblock %}
